@@ -24,6 +24,7 @@ jobs:
       - name: Check JavaScript and data
         run: |
           node --check app.js
+          python scripts/validate_archive.py
           node -e "const d=require('./data/launches.json');if(!Array.isArray(d)||new Set(d.map(x=>x.id)).size!==d.length)process.exit(1)"
       - uses: actions/configure-pages@v5
       - name: Prepare website

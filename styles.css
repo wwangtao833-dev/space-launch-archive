@@ -32,3 +32,4 @@ button:hover{border-color:var(--accent)}
 @media(max-width:560px){.controls,.stats{grid-template-columns:1fr}.meta{grid-template-columns:1fr}.hero{padding-top:42px}}
 
 #pagination{display:flex;align-items:center;justify-content:center;gap:20px;padding:0 0 40px}#pagination button{width:auto}button:disabled{opacity:.4;cursor:default}details{margin-top:14px;color:var(--muted);line-height:1.7}summary{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+header.wrap{padding-top:25px}h1{font-size:clamp(1.6rem,4vw,2.6rem)}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}footer{color:var(--muted);line-height:1.7;padding-bottom:25px}a{color:var(--accent)}.meta dd{overflow-wrap:anywhere}.controls label{font-size:14px}.meta dt{font-size:13px}

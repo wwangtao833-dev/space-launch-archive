@@ -1,88 +1,14 @@
-const state={all:[],filtered:[],page:1,pageSize:10};
 const $=s=>document.querySelector(s);
-const els={
-  q:$("#q"),country:$("#country"),missionType:$("#missionType"),outcome:$("#outcome"),
-  crewed:$("#crewed"),yearFrom:$("#yearFrom"),yearTo:$("#yearTo"),sort:$("#sort"),
-  reset:$("#reset"),cards:$("#cards"),status:$("#status"),count:$("#count"),
-  countryCount:$("#countryCount"),yearRange:$("#yearRange"),tpl:$("#cardTemplate")
-};
-const text=v=>String(v??"").trim();
-const norm=v=>text(v).toLocaleLowerCase("zh-CN");
-const uniq=a=>[...new Set(a.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),"zh-CN"));
-function addOptions(el,values){values.forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;el.appendChild(o);});}
-function searchable(x){
-  return [x.name,x.country_region,x.operator,x.launch_site,x.launch_vehicle,x.vehicle_family,
-    x.manufacturer,x.mission_type,x.destination,x.payload,x.description,
-    ...(x.crew||[])].map(norm).join(" ");
-}
-function apply(){
-  const q=norm(els.q.value),from=Number(els.yearFrom.value)||-Infinity,to=Number(els.yearTo.value)||Infinity;
-  let rows=state.all.filter(x=>{
-    const y=Number(x.year||String(x.date_utc||"").slice(0,4));
-    return (!q||q.split(/\s+/).every(term=>searchable(x).includes(term)))
-      &&(!els.country.value||x.country_region===els.country.value)
-      &&(!els.missionType.value||x.mission_type===els.missionType.value)
-      &&(!els.outcome.value||x.outcome===els.outcome.value)
-      &&(!els.crewed.value||String(Boolean(x.crewed))===els.crewed.value)
-      &&y>=from&&y<=to;
-  });
-  const mode=els.sort.value;
-  rows.sort((a,b)=>{
-    if(mode==="date-asc") return text(a.date_utc).localeCompare(text(b.date_utc));
-    if(mode==="country") return text(a.country_region).localeCompare(text(b.country_region),"zh-CN");
-    if(mode==="vehicle") return text(a.launch_vehicle).localeCompare(text(b.launch_vehicle),"zh-CN");
-    return text(b.date_utc).localeCompare(text(a.date_utc));
-  });
-  state.filtered=rows;state.page=1;render();
-}
-function render(){
-  const rows=state.filtered;els.cards.replaceChildren();
-  els.count.textContent=rows.length.toLocaleString("zh-CN");
-  els.countryCount.textContent=new Set(rows.map(x=>x.country_region).filter(Boolean)).size;
-  const years=rows.map(x=>Number(x.year||String(x.date_utc||"").slice(0,4))).filter(Number.isFinite);
-  els.yearRange.textContent=years.length?Math.min(...years)+"–"+Math.max(...years):"—";
-  els.status.textContent=state.all.length?("数据库共 "+state.all.length.toLocaleString("zh-CN")+" 条记录"):"数据库目前尚无记录";
-  let pager=document.querySelector('#pagination');
-  if(!pager){pager=document.createElement('nav');pager.id='pagination';pager.setAttribute('aria-label','结果分页');els.cards.after(pager);}
-  pager.replaceChildren();
-  const pages=Math.max(1,Math.ceil(rows.length/state.pageSize));
-  for(const [label,delta] of [['上一页',-1],['下一页',1]]){
-    const b=document.createElement('button');b.textContent=label;b.disabled=delta<0?state.page===1:state.page===pages;
-    b.onclick=()=>{state.page+=delta;render();els.status.scrollIntoView({block:'start'});};pager.append(b);
-    if(delta<0){const info=document.createElement('span');info.textContent=`第 ${state.page} / ${pages} 页`;pager.append(info);}
-  }
-  if(!rows.length){const p=document.createElement("p");p.className="empty";p.textContent="没有符合条件的记录。";els.cards.appendChild(p);return;}
-  rows.slice((state.page-1)*state.pageSize,state.page*state.pageSize).forEach(x=>{
-    const node=els.tpl.content.cloneNode(true);
-    node.querySelector(".date").textContent=x.date_utc||"日期待补";
-    node.querySelector(".name").textContent=x.name||"未命名任务";
-    const outcome=node.querySelector(".outcome");outcome.textContent=x.outcome||"结果待补";
-    const meta=node.querySelector(".meta");
-    [["国家/地区",x.country_region],["发射组织",x.operator],["运载器",x.launch_vehicle],["发射场",x.launch_site],
-     ["任务类型",x.mission_type],["目的地",x.destination],["载荷",x.payload],["载人",x.crewed?"是":"否"]]
-      .forEach(pair=>{const k=pair[0],v=pair[1];if(!v&&v!==false)return;const d=document.createElement("div");const dt=document.createElement("dt");const dd=document.createElement("dd");dt.textContent=k;dd.textContent=v;d.append(dt,dd);meta.appendChild(d);});
-    node.querySelector(".description").textContent=x.description||"";
-    const s=node.querySelector(".sources");
-    (x.sources||[]).forEach((src,i)=>{const a=document.createElement("a");if(!/^https?:\/\//i.test(src.url))return;a.href=src.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=src.title||("来源 "+(i+1));s.appendChild(a);});
-    const details=document.createElement('details');
-    const summary=document.createElement('summary');summary.textContent='更多任务信息';details.append(summary);
-    const info=document.createElement('p');
-    info.textContent=[['运载器系列',x.vehicle_family],['制造方',x.manufacturer],['乘组',(x.crew||[]).join('、')],['轨道/目标天体',x.orbit_or_body],['数据核验',x.verification_status||'待逐项核验']].filter(pair=>pair[1]).map(pair=>pair.join('：')).join('；');
-    details.append(info);node.querySelector('article').append(details);
-    els.cards.appendChild(node);
-  });
-}
-function reset(){[els.q,els.yearFrom,els.yearTo].forEach(e=>e.value="");[els.country,els.missionType,els.outcome,els.crewed].forEach(e=>e.value="");els.sort.value="date-desc";apply();}
-async function init(){
-  try{
-    const r=await fetch("data/launches.json",{cache:"no-store"});
-    if(!r.ok) throw new Error("HTTP "+r.status);
-    state.all=await r.json();
-    addOptions(els.country,uniq(state.all.map(x=>x.country_region)));
-    addOptions(els.missionType,uniq(state.all.map(x=>x.mission_type)));
-    addOptions(els.outcome,uniq(state.all.map(x=>x.outcome)));
-    document.querySelectorAll("input,select").forEach(e=>e.addEventListener("input",apply));
-    els.reset.addEventListener("click",reset);apply();
-  }catch(err){els.status.textContent="数据库载入失败："+err.message;console.error(err);}
-}
-init();
+const state={manifest:null,rows:[],filtered:[],page:1,size:40,mode:'year',request:0,cache:new Map()};
+const aliases={'长征':'chang zheng','猎鹰':'falcon','联盟':'soyuz','阿波罗':'apollo','神舟':'shenzhou','天舟':'tianzhou','旅行者':'voyager','斯普特尼克':'sputnik','拜科努尔':'baikonur','酒泉':'jiuquan','库鲁':'kourou'};
+function el(tag,value,cls){const n=document.createElement(tag);if(value!==undefined)n.textContent=value;if(cls)n.className=cls;return n;}
+async function json(path){const r=await fetch(path);if(!r.ok)throw Error(`读取 ${path} 失败（${r.status}）`);if(path.endsWith('.gz')){if(!globalThis.DecompressionStream)throw Error('浏览器不支持解压，请使用新版 Chrome、Edge 或 Firefox');return new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).json();}return r.json();}
+async function yearData(y){if(state.cache.has(y))return state.cache.get(y);const shard=state.manifest.yearShards.find(x=>x.years.includes(Number(y)));if(!shard)throw Error(`没有找到 ${y} 年数据分片`);const grouped=await json(`archive/${shard.file}`);for(const [year,rows] of Object.entries(grouped))state.cache.set(Number(year),rows);return state.cache.get(Number(y));}
+function options(id,values){const n=$(id);n.replaceChildren(new Option('全部',''));for(const v of [...new Set(values)].filter(Boolean).sort())n.add(new Option(v,v));}
+async function load(all=false){const ticket=++state.request;$('#status').textContent=all?'正在载入全库索引…':'正在读取年份档案…';try{const rows=all?(await Promise.all(state.manifest.searchShards.map(x=>json(`archive/${x.file}`)))).flat():await yearData(Number($('#year').value));if(ticket!==state.request)return;state.rows=rows;state.mode=all?'all':'year';options('#type',rows.map(x=>x.actionType||x.t));options('#result',rows.map(x=>x.result));apply();}catch(e){if(ticket===state.request)$('#status').textContent=e.message;}}
+function apply(){const terms=$('#q').value.toLowerCase().trim().split(/\s+/).filter(Boolean);state.filtered=state.rows.filter(x=>{const hay=[x.search,x.q,x.id,x.vehicle,x.v,x.flight,x.f,x.mission,x.agencyName].filter(Boolean).join(' ').toLowerCase();return terms.every(t=>hay.includes(t)||aliases[t]&&hay.includes(aliases[t]))&&(!$('#type').value||(x.actionType||x.t)===$('#type').value)&&(!$('#result').value||x.result===$('#result').value);}).sort((a,b)=>String(b.date?.iso||b.iso||b.id).localeCompare(String(a.date?.iso||a.iso||a.id)));state.page=1;render();}
+function fields(parent,pairs){const dl=el('dl',undefined,'meta');for(const [k,v] of pairs){const d=el('div');d.append(el('dt',k),el('dd',v===null||v===undefined||v===''?'未记录':v));dl.append(d);}parent.append(dl);}
+async function detail(x,target){target.replaceChildren(el('p','载入详情…'));try{const r=x.vehicleDetails?x:(await yearData(x.y)).find(r=>r.id===x.id);if(!r)throw Error('没有找到详情');target.replaceChildren();fields(target,[['档案编号',r.id],['UTC原始时间',r.date?.utc],['原始时间精度',r.date?.precision],['发射场',r.siteName],['场址位置',r.siteLocation],['经度',r.longitude],['纬度',r.latitude],['发射台',r.pad],['机构',r.agencyName],['机构代码',r.agencyCode],['目的地',r.destination],['近地点 km',r.perigee],['远地点 km',r.apogee],['倾角 °',r.inclination],['航程 km',r.range],['入轨总质量 t',r.orbitalMass],['载荷质量 t',r.payloadMass],['制造机构',r.vehicleDetails?.manufacturer],['运载器家族',r.vehicleDetails?.family],['发射时间引文',r.citation],['补充引文',r.citation2],['备注',r.notes]]);if(r.rich?.purpose)target.append(el('p',r.rich.purpose));const raw=el('details');raw.append(el('summary','查看完整原始记录'),el('pre',JSON.stringify(r,null,2)));target.append(raw);}catch(e){target.replaceChildren(el('p',e.message));}}
+function render(){const rows=state.filtered,pages=Math.max(1,Math.ceil(rows.length/state.size));$('#cards').replaceChildren();$('#status').textContent=`${state.mode==='all'?'全库':$('#year').value+' 年'}：${rows.length.toLocaleString()} 条结果 / 已载入 ${state.rows.length.toLocaleString()} 条`;for(const x of rows.slice((state.page-1)*state.size,state.page*state.size)){const card=el('article',undefined,'card');card.append(el('p',(x.date?.cn||x.d||'未记录')+' · UTC+8','date'),el('h2',x.flight||x.mission||x.flightCode||x.flightId||x.f||x.id));fields(card,[['运载器',x.vehicle||x.v],['机构',x.agencyName||x.a],['行动类型',x.actionType||x.t],['结果',x.result]]);const d=el('details'),body=el('div');d.append(el('summary','展开任务、轨迹及来源'),body);let loaded=false;d.addEventListener('toggle',()=>{if(d.open&&!loaded){loaded=true;detail(x,body);}});card.append(d);$('#cards').append(card);}if(!rows.length)$('#cards').append(el('p','没有符合条件的记录。'));$('#page').textContent=`第 ${state.page} / ${pages} 页`;$('#prev').disabled=state.page===1;$('#next').disabled=state.page===pages;}
+$('#q').oninput=apply;$('#type').onchange=apply;$('#result').onchange=apply;$('#year').onchange=()=>load();$('#all').onclick=()=>load(true);$('#reset').onclick=()=>{$('#q').value='';$('#type').value='';$('#result').value='';apply();};for(const [id,delta] of [['#prev',-1],['#next',1]])$(id).onclick=()=>{state.page+=delta;render();$('#status').scrollIntoView();};
+(async()=>{try{state.manifest=await json('archive/manifest.json');const m=state.manifest;$('#coverage').textContent=`${m.total.toLocaleString()} 条 · ${m.coverage.first}–${m.coverage.last} 年 · 来源更新时间 ${m.sourceUpdated} UTC`;for(const y of m.years)$('#year').add(new Option(`${y.year} 年（${y.count} 条）`,y.year));await load();}catch(e){$('#status').textContent=e.message;}})();

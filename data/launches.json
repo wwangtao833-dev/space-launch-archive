@@ -1,1 +1,182 @@
-[]
+[
+  {
+    "id": "1957-sputnik-1", "name": "斯普特尼克1号", "date_utc": "1957-10-04T19:28:34Z", "year": 1957,
+    "country_region": "苏联", "operator": "苏联航天计划", "launch_site": "拜科努尔航天发射场 1/5号工位",
+    "launch_vehicle": "斯普特尼克 8K71PS", "vehicle_family": "R-7", "manufacturer": "OKB-1",
+    "mission_type": "地球科学与技术验证", "destination": "近地轨道", "payload": "斯普特尼克1号", "payload_mass_kg": 83.6,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "近地轨道",
+    "description": "人类首颗进入地球轨道的人造卫星，标志着航天时代开始。",
+    "sources": [{"title": "NASA NSSDC: Sputnik 1", "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1957-001B"}]
+  },
+  {
+    "id": "1958-explorer-1", "name": "探索者1号", "date_utc": "1958-02-01T03:47:56Z", "year": 1958,
+    "country_region": "美国", "operator": "美国陆军弹道导弹局/JPL", "launch_site": "卡纳维拉尔角 LC-26A",
+    "launch_vehicle": "朱诺一号", "vehicle_family": "Redstone/Jupiter-C", "manufacturer": "陆军弹道导弹局",
+    "mission_type": "空间科学", "destination": "近地轨道", "payload": "探索者1号", "payload_mass_kg": 13.97,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "近地轨道",
+    "description": "美国首颗人造卫星；其仪器数据促成范艾伦辐射带的发现。",
+    "sources": [{"title": "NASA: Explorer 1 Overview", "url": "https://science.nasa.gov/mission/explorer-1/"}]
+  },
+  {
+    "id": "1961-vostok-1", "name": "东方1号", "date_utc": "1961-04-12T06:07:00Z", "year": 1961,
+    "country_region": "苏联", "operator": "苏联航天计划", "launch_site": "拜科努尔航天发射场 1/5号工位",
+    "launch_vehicle": "东方-K", "vehicle_family": "R-7", "manufacturer": "OKB-1",
+    "mission_type": "载人航天", "destination": "近地轨道", "payload": "东方3KA载人飞船", "payload_mass_kg": 4725,
+    "crewed": true, "crew": ["尤里·加加林"], "outcome": "成功", "orbit_or_body": "近地轨道",
+    "description": "首次载人太空飞行，完成一次地球轨道飞行。",
+    "sources": [{"title": "ESA: Yuri Gagarin", "url": "https://www.esa.int/About_Us/ESA_history/50_years_of_humans_in_space/Yuri_Gagarin"}]
+  },
+  {
+    "id": "1969-apollo-11", "name": "阿波罗11号", "date_utc": "1969-07-16T13:32:00Z", "year": 1969,
+    "country_region": "美国", "operator": "NASA", "launch_site": "肯尼迪航天中心 LC-39A",
+    "launch_vehicle": "土星五号", "vehicle_family": "Saturn", "manufacturer": "NASA及承包商联合体",
+    "mission_type": "载人月球探测", "destination": "月球", "payload": "哥伦比亚号指令舱与鹰号登月舱", "payload_mass_kg": 43500,
+    "crewed": true, "crew": ["尼尔·阿姆斯特朗", "巴兹·奥尔德林", "迈克尔·柯林斯"], "outcome": "成功", "orbit_or_body": "月球",
+    "description": "首次实现人类登陆月球并安全返回地球。",
+    "sources": [{"title": "NASA: Apollo 11", "url": "https://www.nasa.gov/mission/apollo-11/"}]
+  },
+  {
+    "id": "1970-dongfanghong-1", "name": "东方红一号", "date_utc": "1970-04-24T13:35:00Z", "year": 1970,
+    "country_region": "中国", "operator": "中国空间技术研究院", "launch_site": "酒泉卫星发射中心",
+    "launch_vehicle": "长征一号", "vehicle_family": "长征", "manufacturer": "中国运载火箭技术研究院",
+    "mission_type": "技术验证与通信", "destination": "近地轨道", "payload": "东方红一号", "payload_mass_kg": 173,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "近地轨道",
+    "description": "中国首颗人造地球卫星，使中国成为第五个独立发射卫星的国家。",
+    "sources": [{"title": "中国国家航天局：东方红一号", "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6810392/content.html"}]
+  },
+  {
+    "id": "1971-salyut-1", "name": "礼炮1号", "date_utc": "1971-04-19T01:40:00Z", "year": 1971,
+    "country_region": "苏联", "operator": "苏联航天计划", "launch_site": "拜科努尔航天发射场",
+    "launch_vehicle": "质子-K", "vehicle_family": "Proton", "manufacturer": "切洛梅设计局",
+    "mission_type": "空间站", "destination": "近地轨道", "payload": "礼炮1号空间站", "payload_mass_kg": 18425,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "近地轨道",
+    "description": "人类首座空间站，随后由联盟11号乘组完成驻留。",
+    "sources": [{"title": "NASA NSSDCA: Salyut 1", "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-032A"}]
+  },
+  {
+    "id": "1977-voyager-2", "name": "旅行者2号", "date_utc": "1977-08-20T14:29:00Z", "year": 1977,
+    "country_region": "美国", "operator": "NASA/JPL", "launch_site": "卡纳维拉尔角 LC-41",
+    "launch_vehicle": "泰坦三E-半人马座", "vehicle_family": "Titan", "manufacturer": "Martin Marietta/General Dynamics",
+    "mission_type": "深空探测", "destination": "外太阳系", "payload": "旅行者2号", "payload_mass_kg": 825.5,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "木星、土星、天王星、海王星及星际空间",
+    "description": "唯一近距离访问天王星和海王星的探测器，后进入星际空间。",
+    "sources": [{"title": "NASA: Voyager 2", "url": "https://science.nasa.gov/mission/voyager/voyager-2/"}]
+  },
+  {
+    "id": "1981-sts-1", "name": "STS-1 哥伦比亚号", "date_utc": "1981-04-12T12:00:04Z", "year": 1981,
+    "country_region": "美国", "operator": "NASA", "launch_site": "肯尼迪航天中心 LC-39A",
+    "launch_vehicle": "航天飞机哥伦比亚号", "vehicle_family": "Space Shuttle", "manufacturer": "Rockwell International",
+    "mission_type": "载人航天与可重复使用飞行器试验", "destination": "近地轨道", "payload": "哥伦比亚号轨道器", "payload_mass_kg": 99453,
+    "crewed": true, "crew": ["约翰·杨", "罗伯特·克里彭"], "outcome": "成功", "orbit_or_body": "近地轨道",
+    "description": "美国航天飞机计划首次轨道飞行，也是首次载人首飞的新型轨道飞行器。",
+    "sources": [{"title": "NASA: STS-1", "url": "https://www.nasa.gov/mission/sts-1/"}]
+  },
+  {
+    "id": "1990-hubble", "name": "哈勃空间望远镜部署任务 STS-31", "date_utc": "1990-04-24T12:33:51Z", "year": 1990,
+    "country_region": "美国", "operator": "NASA/ESA", "launch_site": "肯尼迪航天中心 LC-39B",
+    "launch_vehicle": "航天飞机发现号", "vehicle_family": "Space Shuttle", "manufacturer": "Rockwell International",
+    "mission_type": "空间天文", "destination": "近地轨道", "payload": "哈勃空间望远镜", "payload_mass_kg": 11110,
+    "crewed": true, "crew": ["洛伦·施里弗", "查尔斯·博尔登", "布鲁斯·麦坎德利斯", "凯瑟琳·沙利文", "史蒂文·霍利"], "outcome": "成功", "orbit_or_body": "近地轨道",
+    "description": "发现号将哈勃空间望远镜送入轨道，为后续数十年空间天文学奠定基础。",
+    "sources": [{"title": "NASA: Hubble Launch and Deployment", "url": "https://science.nasa.gov/mission/hubble/observatory/design/launch-and-deployment/"}]
+  },
+  {
+    "id": "1998-zarya", "name": "曙光号功能货舱", "date_utc": "1998-11-20T06:40:00Z", "year": 1998,
+    "country_region": "俄罗斯", "operator": "俄罗斯航天局/NASA", "launch_site": "拜科努尔航天发射场 81号工位",
+    "launch_vehicle": "质子-K", "vehicle_family": "Proton", "manufacturer": "赫鲁尼切夫国家航天研制中心",
+    "mission_type": "空间站", "destination": "近地轨道", "payload": "曙光号", "payload_mass_kg": 19323,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "近地轨道",
+    "description": "国际空间站首个发射入轨的舱段。",
+    "sources": [{"title": "NASA: International Space Station Assembly", "url": "https://www.nasa.gov/international-space-station/space-station-assembly/"}]
+  },
+  {
+    "id": "2003-shenzhou-5", "name": "神舟五号", "date_utc": "2003-10-15T01:00:03Z", "year": 2003,
+    "country_region": "中国", "operator": "中国载人航天工程办公室", "launch_site": "酒泉卫星发射中心",
+    "launch_vehicle": "长征二号F", "vehicle_family": "长征", "manufacturer": "中国运载火箭技术研究院",
+    "mission_type": "载人航天", "destination": "近地轨道", "payload": "神舟五号载人飞船", "payload_mass_kg": 7790,
+    "crewed": true, "crew": ["杨利伟"], "outcome": "成功", "orbit_or_body": "近地轨道",
+    "description": "中国首次载人航天飞行。",
+    "sources": [{"title": "中国载人航天：神舟五号", "url": "https://www.cmse.gov.cn/ztbd/xwzt/zgzrhtgcwcrw/"}]
+  },
+  {
+    "id": "2008-falcon-1-flight-4", "name": "猎鹰1号第四次飞行", "date_utc": "2008-09-28T23:15:00Z", "year": 2008,
+    "country_region": "美国", "operator": "SpaceX", "launch_site": "夸贾林环礁 Omelek岛",
+    "launch_vehicle": "猎鹰1号", "vehicle_family": "Falcon", "manufacturer": "SpaceX",
+    "mission_type": "运载火箭技术验证", "destination": "近地轨道", "payload": "Ratsat质量模拟器", "payload_mass_kg": 165,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "近地轨道",
+    "description": "首枚由私人开发的液体燃料运载火箭成功将载荷送入地球轨道。",
+    "sources": [{"title": "SpaceX: Falcon 1 Flight 4", "url": "https://www.spacex.com/updates/"}]
+  },
+  {
+    "id": "2012-curiosity", "name": "火星科学实验室·好奇号", "date_utc": "2011-11-26T15:02:00Z", "year": 2011,
+    "country_region": "美国", "operator": "NASA/JPL", "launch_site": "卡纳维拉尔角 SLC-41",
+    "launch_vehicle": "宇宙神五号 541", "vehicle_family": "Atlas V", "manufacturer": "United Launch Alliance",
+    "mission_type": "火星探测", "destination": "火星", "payload": "好奇号火星车", "payload_mass_kg": 3893,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "火星",
+    "description": "搭载好奇号火星车的火星科学实验室任务，采用空中吊车系统着陆。",
+    "sources": [{"title": "NASA: Mars Science Laboratory", "url": "https://science.nasa.gov/mission/msl-curiosity/"}]
+  },
+  {
+    "id": "2014-rosetta", "name": "罗塞塔号", "date_utc": "2004-03-02T07:17:44Z", "year": 2004,
+    "country_region": "欧洲", "operator": "欧洲航天局", "launch_site": "圭亚那航天中心 ELA-3",
+    "launch_vehicle": "阿丽亚娜5G+", "vehicle_family": "Ariane 5", "manufacturer": "Arianespace",
+    "mission_type": "彗星探测", "destination": "67P/丘留莫夫－格拉西缅科彗星", "payload": "罗塞塔号与菲莱着陆器", "payload_mass_kg": 3000,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "67P彗星",
+    "description": "首次环绕彗星运行并释放着陆器到彗星表面的任务。",
+    "sources": [{"title": "ESA: Rosetta", "url": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta"}]
+  },
+  {
+    "id": "2018-falcon-heavy-demo", "name": "猎鹰重型火箭演示飞行", "date_utc": "2018-02-06T20:45:00Z", "year": 2018,
+    "country_region": "美国", "operator": "SpaceX", "launch_site": "肯尼迪航天中心 LC-39A",
+    "launch_vehicle": "猎鹰重型", "vehicle_family": "Falcon", "manufacturer": "SpaceX",
+    "mission_type": "运载火箭技术验证", "destination": "日心轨道", "payload": "特斯拉 Roadster", "payload_mass_kg": 1250,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "日心轨道",
+    "description": "猎鹰重型首次飞行，两枚助推器同步返回着陆。",
+    "sources": [{"title": "SpaceX: Falcon Heavy", "url": "https://www.spacex.com/vehicles/falcon-heavy/"}]
+  },
+  {
+    "id": "2020-crew-dragon-demo-2", "name": "载人龙飞船 Demo-2", "date_utc": "2020-05-30T19:22:45Z", "year": 2020,
+    "country_region": "美国", "operator": "NASA/SpaceX", "launch_site": "肯尼迪航天中心 LC-39A",
+    "launch_vehicle": "猎鹰9号 Block 5", "vehicle_family": "Falcon 9", "manufacturer": "SpaceX",
+    "mission_type": "载人航天", "destination": "国际空间站", "payload": "奋进号载人龙飞船", "payload_mass_kg": 12055,
+    "crewed": true, "crew": ["道格拉斯·赫尔利", "罗伯特·本肯"], "outcome": "成功", "orbit_or_body": "近地轨道",
+    "description": "商业载人航天计划首次载人试飞，美国自2011年以来首次从本土发射宇航员。",
+    "sources": [{"title": "NASA: SpaceX Demo-2", "url": "https://www.nasa.gov/mission/nasas-spacex-demo-2/"}]
+  },
+  {
+    "id": "2020-change-5", "name": "嫦娥五号", "date_utc": "2020-11-23T20:30:12Z", "year": 2020,
+    "country_region": "中国", "operator": "中国国家航天局", "launch_site": "文昌航天发射场 LC-101",
+    "launch_vehicle": "长征五号", "vehicle_family": "长征", "manufacturer": "中国运载火箭技术研究院",
+    "mission_type": "月球采样返回", "destination": "月球", "payload": "嫦娥五号探测器", "payload_mass_kg": 8200,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "月球",
+    "description": "完成中国首次地外天体采样返回，将月球样品带回地球。",
+    "sources": [{"title": "中国国家航天局：嫦娥五号", "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6810869/content.html"}]
+  },
+  {
+    "id": "2021-james-webb", "name": "詹姆斯·韦布空间望远镜", "date_utc": "2021-12-25T12:20:07Z", "year": 2021,
+    "country_region": "欧洲", "operator": "NASA/ESA/CSA", "launch_site": "圭亚那航天中心 ELA-3",
+    "launch_vehicle": "阿丽亚娜5 ECA", "vehicle_family": "Ariane 5", "manufacturer": "Arianespace",
+    "mission_type": "空间天文", "destination": "日地L2点", "payload": "詹姆斯·韦布空间望远镜", "payload_mass_kg": 6161,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "日地L2晕轨道",
+    "description": "大型红外空间望远镜，部署至日地第二拉格朗日点附近。",
+    "sources": [{"title": "NASA: James Webb Space Telescope", "url": "https://science.nasa.gov/mission/webb/"}]
+  },
+  {
+    "id": "2022-artemis-1", "name": "阿耳忒弥斯1号", "date_utc": "2022-11-16T06:47:44Z", "year": 2022,
+    "country_region": "美国", "operator": "NASA", "launch_site": "肯尼迪航天中心 LC-39B",
+    "launch_vehicle": "太空发射系统 Block 1", "vehicle_family": "SLS", "manufacturer": "NASA及承包商联合体",
+    "mission_type": "无人月球试飞", "destination": "月球", "payload": "猎户座飞船", "payload_mass_kg": 26520,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "月球远距逆行轨道",
+    "description": "SLS与猎户座飞船首次综合飞行试验，完成绕月并返回。",
+    "sources": [{"title": "NASA: Artemis I", "url": "https://www.nasa.gov/mission/artemis-i/"}]
+  },
+  {
+    "id": "2023-chandrayaan-3", "name": "月船3号", "date_utc": "2023-07-14T09:05:17Z", "year": 2023,
+    "country_region": "印度", "operator": "印度空间研究组织", "launch_site": "萨蒂什·达万航天中心 第二发射台",
+    "launch_vehicle": "LVM3-M4", "vehicle_family": "LVM3", "manufacturer": "印度空间研究组织",
+    "mission_type": "月球探测", "destination": "月球", "payload": "推进舱、维克拉姆着陆器与普拉吉安月球车", "payload_mass_kg": 3900,
+    "crewed": false, "crew": [], "outcome": "成功", "orbit_or_body": "月球",
+    "description": "实现印度首次月面软着陆，并在月球南极高纬区域开展巡视探测。",
+    "sources": [{"title": "ISRO: Chandrayaan-3", "url": "https://www.isro.gov.in/Chandrayaan3_New.html"}]
+  }
+]

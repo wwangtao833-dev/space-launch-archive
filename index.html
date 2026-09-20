@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="人类飞行器发射行动档案：按时间、国家/地区、发射组织、运载器、任务类型和结果检索。">
+  <title>人类飞行器发射行动档案</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">SPACE LAUNCH ARCHIVE</p>
+      <h1>人类飞行器发射行动档案</h1>
+      <p class="subtitle">以发射行动为核心索引，检索人类进入高空、轨道与深空的技术历史。</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="controls" aria-label="检索与筛选">
+      <label class="search">
+        <span>关键词</span>
+        <input id="q" type="search" placeholder="任务、运载器、国家、发射场、载荷……">
+      </label>
+      <label><span>国家/地区</span><select id="country"><option value="">全部</option></select></label>
+      <label><span>任务类型</span><select id="missionType"><option value="">全部</option></select></label>
+      <label><span>结果</span><select id="outcome"><option value="">全部</option></select></label>
+      <label><span>载人</span>
+        <select id="crewed">
+          <option value="">全部</option>
+          <option value="true">载人</option>
+          <option value="false">无人</option>
+        </select>
+      </label>
+      <label><span>年份起</span><input id="yearFrom" type="number" min="1900" max="2100" placeholder="如 1957"></label>
+      <label><span>年份止</span><input id="yearTo" type="number" min="1900" max="2100" placeholder="如 2026"></label>
+      <label><span>排序</span>
+        <select id="sort">
+          <option value="date-desc">日期：新 → 旧</option>
+          <option value="date-asc">日期：旧 → 新</option>
+          <option value="country">国家/地区</option>
+          <option value="vehicle">运载器</option>
+        </select>
+      </label>
+      <button id="reset" type="button">重置</button>
+    </section>
+
+    <section class="stats" aria-label="统计">
+      <div><strong id="count">0</strong><span>当前结果</span></div>
+      <div><strong id="countryCount">0</strong><span>国家/地区</span></div>
+      <div><strong id="yearRange">—</strong><span>时间范围</span></div>
+    </section>
+
+    <section>
+      <div id="status" class="status">正在载入数据库…</div>
+      <div id="cards" class="cards"></div>
+    </section>
+  </main>
+
+  <template id="cardTemplate">
+    <article class="card">
+      <div class="card-head">
+        <div>
+          <p class="date"></p>
+          <h2 class="name"></h2>
+        </div>
+        <span class="outcome badge"></span>
+      </div>
+      <dl class="meta"></dl>
+      <p class="description"></p>
+      <div class="sources"></div>
+    </article>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

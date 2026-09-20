@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Space Launch Archive Record",
+  "type": "object",
+  "required": ["id", "name", "date_utc", "country_region", "launch_vehicle", "mission_type", "outcome"],
+  "properties": {
+    "id": {"type": "string", "description": "稳定唯一标识"},
+    "name": {"type": "string", "description": "任务/发射行动名称"},
+    "date_utc": {"type": "string", "description": "UTC 日期或时间，ISO 8601"},
+    "year": {"type": "integer"},
+    "country_region": {"type": "string"},
+    "operator": {"type": "string"},
+    "launch_site": {"type": "string"},
+    "site_coordinates": {
+      "type": ["object","null"],
+      "properties": {"lat":{"type":"number"},"lon":{"type":"number"}}
+    },
+    "launch_vehicle": {"type": "string"},
+    "vehicle_family": {"type": "string"},
+    "manufacturer": {"type": "string"},
+    "mission_type": {"type": "string"},
+    "destination": {"type": "string"},
+    "payload": {"type": "string"},
+    "payload_mass_kg": {"type": ["number","null"]},
+    "crewed": {"type": "boolean"},
+    "crew": {"type": "array", "items":{"type":"string"}},
+    "outcome": {"type": "string"},
+    "orbit_or_body": {"type": "string"},
+    "description": {"type": "string"},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type":"object",
+        "required":["title","url"],
+        "properties":{"title":{"type":"string"},"url":{"type":"string"}}
+      }
+    }
+  }
+}
